@@ -2,7 +2,7 @@ import argparse
 from args import get_default_ArgumentParser, process_common_arguments
 from dataprun import GenerateWL, GenerateDomain2IP
 import logging
-#from DomainNameSimilarity import getDomainSimilarityCSR
+from DomainNameSimilarity import comparedomainmass
 from ip_to_ip import ip_to_ip
 from time import time
 from label import Label, LabelFiles
@@ -86,17 +86,16 @@ def main():
   logging.info("Shape of labels: " + str(labels.shape))
  
   ################### Domain similarity ##########################
-  #if not FLAGS.exclude_domain_similarity:
-  #  time1 = time()
-  #  domainSimilarityCSR = getDomainSimilarityCSR(domain2index,
-  #                                          domain2ip, 
-  #                                          FLAGS.domain_similarity_threshold) 
-  #  logging.info("Time for domain similarity " + 
-  #               "{:.2f}".format(time() - time1))
-  #  print_nnz_info(domainSimilarityCSR, "domain similarity")
-  #else:
-  #  logging.info("Excluding domain similarity")
-  #  domainSimilarityCSR = None
+  ''' $  Added the Domain Similarity Domain (S) module '''
+  domainSimilarityCSR = None
+  if not FLAGS.exclude_domain_similarity:
+    time1 = time()
+    domainSimilarityCSR = comparedomainmass(domain2index) 
+    logging.info("Time for domain similarity " + 
+                 "{:.2f}".format(time() - time1))
+    print_nnz_info(domainSimilarityCSR, "domain similarity")
+  else:
+    logging.info("Excluding domain similarity")
 
 
   #################### ip to ip ###################################
