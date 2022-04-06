@@ -1,3 +1,7 @@
+'''HinDom: Domain similar Domain 
+Generating the Similarity matrix (S) using the DNS log data
+
+'''
 import argparse
 from difflib import SequenceMatcher 
 import tldextract
@@ -9,6 +13,7 @@ import ngram
 from statistics import mean
 
 def charSimilar(s1, s2):
+    """Returns the simiarity of two strings. See difflib documentation"""
     ratio = SequenceMatcher(None, s1, s2).ratio()
     return ratio
 
