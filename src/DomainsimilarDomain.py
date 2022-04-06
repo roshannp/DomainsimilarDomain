@@ -1,5 +1,9 @@
-'''HinDom: Domain similar Domain 
-Generating the Similarity matrix (S) using the DNS log data
+'''
+    HinDom: Domain similar Domain 
+    Generating the Similarity matrix (S) using the DNS log data
+- Script name: DomainsimilarDomain.py
+- Team members: Pravinbalaji Solai Anand, Roshan Nellore Prasad 
+- python3 DomainsimilarDomain.py --inputfile /data/examples/dns100000.log
 
 '''
 import argparse
